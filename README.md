@@ -4,6 +4,11 @@ Este proyecto es un módulo de Odoo diseñado para gestionar zoológicos, incluy
 
 ## Características principales
 
+- **Gestión del zoológico**:
+  - Registro de información general del zoológico, como nombre, ubicación, horarios de apertura, y descripción.
+  - Gestión de áreas específicas del zoológico (zonas temáticas, exhibiciones, etc.).
+  - Seguimiento de empleados asignados a cada área o función específica dentro del zoológico.
+
 - **Gestión de especies**: 
   - Registro de especies con información relevante (nombre científico, nombre común, hábitat natural, dieta, etc.).
   - Clasificación por familias y categorías taxonómicas.
@@ -15,9 +20,6 @@ Este proyecto es un módulo de Odoo diseñado para gestionar zoológicos, incluy
 - **Gestión de hábitats**: 
   - Registro y monitoreo de hábitats dentro del zoológico.
   - Asignación de animales a hábitats específicos.
-
-- **Reportes**:
-  - Generación de informes personalizados sobre el inventario de animales, su estado y otros datos relevantes.
 
 - **Integración con otras aplicaciones de Odoo**: 
   - Integración opcional con los módulos de inventario, ventas y recursos humanos para una gestión más completa.
