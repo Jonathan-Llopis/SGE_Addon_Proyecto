@@ -7,7 +7,7 @@ class GestionZooPeligro(models.Model):
     _description = "Gestión Zoo Peligro"
 
     grado_peligro = fields.Selection(selection=((1, "Seguro"), (2,"Riesgo Bajo"), (3, "Riesgo Moderado"),
-                                                (4, "Peligroso"), (5,"Altamente Peligroso"), (6, "Peligro Crítico/Ecológico")))
+                                                (4, "Peligroso"), (5,"Altamente Peligroso"), (6, "Peligro Crítico/Ecológico")),  required=True)
      
     # Relacions proposades:
         #(1-M) Especie

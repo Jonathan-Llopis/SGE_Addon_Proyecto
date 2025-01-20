@@ -7,6 +7,10 @@ class GestionZooFamilia(models.Model):
     _description = "Gestión Zoo Familia"
 
     nombre = fields.Char(required=True)
+    
+    _sql_constraints = [
+          ('nombre_family_unique', 'unique(nombre)', 'El nombre debe ser único'),
+    ]
         
    # Relacions proposades:
         #(1-M) Especies (1-M)SubFamilia

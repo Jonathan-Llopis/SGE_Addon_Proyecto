@@ -8,5 +8,9 @@ class GestionZooSubFamilia(models.Model):
 
     nombre = fields.Char()
 
+    _sql_constraints = [
+          ('nombre_subfamily_unique', 'unique(nombre)', 'El nombre debe ser único'),
+    ]
+
     # Relacions proposades:
         #(1-M) Especies (M-1)Familia

@@ -6,14 +6,17 @@ class GestionZoo(models.Model):
     _name = "gestion.zoo"
     _description = "Gestión Zoo"
 
-    nombre = fields.Char()
+    nombre = fields.Char(required=True)
     ciudad = fields.Char()
     extension = fields.Float(string="Extensión")
     unidad_extension = fields.Selection(selection=(("m", "Metros Cuadrados"), ("h", "Hectárea")),
                                         string="Unidad de Extensión", default="m")
     tipo = fields.Selection(selection=(("tradicional", "Tradicional"), ("safari", "Safari"), ("especializado","Especializado"), ("bioparque", "Bioparque"), 
-                                       ("acuario", "Acuario"), ))
+                                       ("acuario", "Acuario") ), required=True)
    
+    _sql_constraints = [
+          ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
+    ]
     
     @api.onchange('unidad_extension', 'extension')
     def _onchange_(self):
