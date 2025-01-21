@@ -14,16 +14,16 @@ class GestionZooHabitat(models.Model):
     ], string="Unidad de Temperatura", default='c')
     humedad = fields.Integer(string= "Humedad Relativa %")     
     tipo_habitat = fields.Selection([
-    ('terrestre', 'Terrestre'), 
-    ('acuatico', 'Acuático'), 
-    ('marino', 'Marino'), 
-    ('escalable', 'Con Objetos Escalables'), 
-    ('aereo', 'Aéreo'),
-    ('mixto', 'Mixto (Terrestre y Acuático)')
+        ('terrestre', 'Terrestre'), 
+        ('acuatico', 'Acuático'), 
+        ('marino', 'Marino'), 
+        ('escalable', 'Con Objetos Escalables'), 
+        ('aereo', 'Aéreo'),
+        ('mixto', 'Mixto (Terrestre y Acuático)')
     ], string='Tipo de Hábitat')
     
     _sql_constraints = [
-          ('nombre_habitat_unique', 'unique(nombre)', 'El nombre debe ser único'),
+            ('nombre_habitat_unique', 'unique(nombre)', 'El nombre debe ser único'),
     ]
     
     @api.onchange('unidad_temperatura', 'temperatura')

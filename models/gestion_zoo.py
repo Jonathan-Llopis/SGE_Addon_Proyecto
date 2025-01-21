@@ -11,11 +11,14 @@ class GestionZoo(models.Model):
     extension = fields.Float(string="Extensión")
     unidad_extension = fields.Selection(selection=(("m", "Metros Cuadrados"), ("h", "Hectárea")),
                                         string="Unidad de Extensión", default="m")
-    tipo = fields.Selection(selection=(("tradicional", "Tradicional"), ("safari", "Safari"), ("especializado","Especializado"), ("bioparque", "Bioparque"), 
+    tipo = fields.Selection(selection=(("tradicional", "Tradicional"),
+                                       ("safari", "Safari"),
+                                       ("especializado","Especializado"),
+                                       ("bioparque", "Bioparque"), 
                                        ("acuario", "Acuario") ), required=True)
    
     _sql_constraints = [
-          ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
+            ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
     ]
     
     @api.onchange('unidad_extension', 'extension')

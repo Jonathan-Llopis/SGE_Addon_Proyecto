@@ -2,8 +2,5 @@
 "access_gestion_zoo","gestion.zoo group_user","model_gestion_zoo","base.group_user",1,1,1,1
 "access_gestion_zoo_animal","gestion.zoo.animal group_user","model_gestion_zoo_animal","base.group_user",1,1,1,1
 "access_gestion_zoo_especie","gestion.zoo.especie group_user","model_gestion_zoo_especie","base.group_user",1,1,1,1
-"access_gestion_zoo_familia","gestion.zoo.familia group_user","model_gestion_zoo_familia","base.group_user",1,1,1,1
 "access_gestion_zoo_habitat","gestion.zoo.habitat group_user","model_gestion_zoo_habitat","base.group_user",1,1,1,1
-"access_gestion_zoo_peligro","gestion.zoo.peligro group_user","model_gestion_zoo_peligro","base.group_user",1,1,1,1
-"access_gestion_zoo_subfamilia","gestion.zoo.subfamilia group_user","model_gestion_zoo_subfamilia","base.group_user",1,1,1,1
 "access_gestion_zoo_raza","gestion.zoo.raza group_user","model_gestion_zoo_raza","base.group_user",1,1,1,1

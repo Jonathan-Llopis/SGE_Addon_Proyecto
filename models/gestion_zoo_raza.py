@@ -9,7 +9,7 @@ class GestionZooRaza(models.Model):
     nombre = fields.Char( required=True)
     
     _sql_constraints = [
-          ('nombre_raza_unique', 'unique(nombre)', 'El nombre debe ser único'),
+            ('nombre_raza_unique', 'unique(nombre)', 'El nombre debe ser único'),
     ]
     
     # Relacions proposades:
