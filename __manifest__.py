@@ -13,6 +13,12 @@
     "depends": ["base"], 
     "data": [
         "security/ir.model.access.csv",
+        "views/gestion_zoo_views.xml",
+        "views/gestion_zoo_animal_views.xml",
+        "views/gestion_zoo_especie_views.xml",
+        "views/gestion_zoo_habitats_views.xml",
+        "views/gestion_zoo_raza_views.xml",
+        "views/gestion_zoo_menu.xml",
     ],
     "installable": True,
     "auto_install": False,
