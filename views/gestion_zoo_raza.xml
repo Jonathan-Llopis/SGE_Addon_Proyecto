@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_raza_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Raza View</field>
+        <field name="res_model">gestion.zoo.raza</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="gestion_zoo_raza_view_tree" model="ir.ui.view">
+        <field name = "name">gestion.zoo.raza.view.tree</field>
+        <field name="model">gestion.zoo.raza</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Raza">
+                <field name="nombre" string="Nombre Raza"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

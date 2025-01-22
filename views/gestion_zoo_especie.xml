@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_especie_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Especie View</field>
+        <field name="res_model">gestion.zoo.especie</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="gestion_zoo_especie_view_tree" model="ir.ui.view">
+        <field name = "name">gestion.zoo.especie.view.tree</field>
+        <field name="model">gestion.zoo.especie</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Especie">
+                <field name="nombre_vulgar" string="Nombre Vulgar"/>
+                <field name="nombre_cientifico" string="Nombre Científico"/>
+                <field name="peligro_extincion" string="Peligro de Extinción"/>
+                <field name="dieta" string="Dieta"/>
+                <field name="grado_peligro" string="Grado Peligro"/>
+                <field name="familia" string="Familia"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

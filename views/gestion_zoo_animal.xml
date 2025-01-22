@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_animal_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Animales View</field>
+        <field name="res_model">gestion.zoo.animal</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="gestion_zoo_animal_view_tree" model="ir.ui.view">
+        <field name = "name">gestion.zoo.animal.view.tree</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Animales">
+                <field name="edad" string="Edad"/>
+                <field name="sexo" string="Sexo"/>
+                <field name="continente" string="Continente Origen"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
