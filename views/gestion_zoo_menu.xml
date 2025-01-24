@@ -2,14 +2,12 @@
 <odoo>
     <menuitem id="gestion_zoo_menu_root" name="Gestión Zoo">
         <menuitem id="gestion_zoo_first_level_menu" name="Gestión Zoo">
-            <menuitem id="gestion_zoo_menu_action" name="Gestión">
                 <menuitem id="gestion_zoo_menu_action_zoo" action="gestion_zoo_action_zoo" name="Mis Zoos"/>
-                <menuitem id="gestion_zoo_menu_action_animals" action="gestion_zoo_action_animal" name="Mis Animales"/>
-            </menuitem>
+                <menuitem id="gestion_zoo_menu_action_animals" action="gestion_zoo_animal_action_zoo" name="Mis Animales"/>
         </menuitem>
         <menuitem id="gestion_zoo_first_setting_menu" name="Configuracion">
-            <menuitem id="gestion_zoo_menu_action_especie" action="gestion_zoo_action_especie" name="Gestión Especies"/>
-            <menuitem id="gestion_zoo_menu_action_habitats" action="gestion_zoo_action_habitats" name="Gestión Habitats"/>
+            <menuitem id="gestion_zoo_menu_action_especie" action="gestion_zoo_especie_action_zoo" name="Gestión Especies"/>
+            <menuitem id="gestion_zoo_menu_action_habitats" action="gestion_zoo_habitats_action_zoo" name="Gestión Habitats"/>
         </menuitem>
     </menuitem>
 </odoo>

@@ -2,12 +2,12 @@
 <odoo>
     <record id="gestion_zoo_habitats_action_zoo" model="ir.actions.act_window">
         <field name="name">Gestión Zoo Habitats View</field>
-        <field name="res_model">gestion.zoo.habitats</field>
+        <field name="res_model">gestion.zoo.habitat</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="gestion_zoo_habitats_view_tree" model="ir.ui.view">
-        <field name = "name">gestion.zoo.habitats.view.tree</field>
-        <field name="model">gestion.zoo.habitats</field>
+        <field name = "name">gestion.zoo.habitat.view.tree</field>
+        <field name="model">gestion.zoo.habitat</field>
         <field name="arch" type="xml">
             <tree string="Gestión Habitats">
                 <field name="nombre" string="Nombre"/>
