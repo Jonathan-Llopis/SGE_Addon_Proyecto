@@ -30,11 +30,12 @@ class GestionZooHabitat(models.Model):
     
     @api.onchange('unidad_temperatura', 'temperatura')
     def _onchange_unidad_temperatura(self):
-        if self.temperatura:
+        if self.temperatura and self.temperatura_establecida:
             if self.unidad_temperatura == 'c':
                 self.temperatura = (self.temperatura - 32) * 5.0 / 9.0
             elif self.unidad_temperatura == 'f':
                 self.temperatura = self.temperatura * 9.0 / 5.0 + 32
+        self.temperatura_establecida = True
 
     @api.depends('temperatura', 'unidad_temperatura')
     def _compute_temperatura_con_unidad(self):
