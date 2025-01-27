@@ -23,6 +23,7 @@ class GestionZoo(models.Model):
     )
     extension_con_prefijo = fields.Char(string="Extensión con Prefijo", compute='_compute_extension_con_prefijo')
     sequence = fields.Integer('Sequence', default=1)
+    extension_establecida = fields.Boolean(default=False)
 
     _sql_constraints = [
         ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),

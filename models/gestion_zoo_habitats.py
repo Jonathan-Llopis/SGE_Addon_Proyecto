@@ -23,7 +23,7 @@ class GestionZooHabitat(models.Model):
     ], string='Tipo de Hábitat')
     
     temperatura_con_unidad = fields.Char(string="Temperatura con Unidad", compute="_compute_temperatura_con_unidad", store=True)
-    
+    temperatura_establecida = fields.Boolean(default=False)
     _sql_constraints = [
         ('nombre_habitat_unique', 'unique(nombre)', 'El nombre del hábitat debe ser único'),
     ]
