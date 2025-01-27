@@ -12,7 +12,7 @@
             <tree string="Gestión Animales">
                 <field name="edad" string="Edad"/>
                 <field name="sexo" string="Sexo"/>
-                <field name="continente" string="Continente Origen"/>
+                <field name="continente" string="Continente Origen" widget="statusbar" options="{'color_field': 'color_continente'}"/>
             </tree>
         </field>
     </record>

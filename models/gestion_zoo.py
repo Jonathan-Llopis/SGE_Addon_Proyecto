@@ -16,7 +16,7 @@ class GestionZoo(models.Model):
                                        ("especializado","Especializado"),
                                        ("bioparque", "Bioparque"), 
                                        ("acuario", "Acuario") ), required=True)
-   
+    sequence = fields.Integer("Sequence", default=1)
     _sql_constraints = [
             ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
     ]

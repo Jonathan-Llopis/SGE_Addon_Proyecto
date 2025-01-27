@@ -9,7 +9,7 @@
         <field name = "name">gestion.zoo.raza.view.tree</field>
         <field name="model">gestion.zoo.raza</field>
         <field name="arch" type="xml">
-            <tree string="Gestión Raza">
+            <tree string="Gestión Raza"  editable="bottom">
                 <field name="nombre" string="Nombre Raza"/>
             </tree>
         </field>

@@ -9,7 +9,8 @@
         <field name = "name">gestion.zoo.view.tree</field>
         <field name="model">gestion.zoo</field>
         <field name="arch" type="xml">
-            <tree string="Gestión Zoo">
+            <tree string="Gestión Zoo" editable="bottom">
+                <field name="sequence" widget="handle"/>
                 <field name="nombre" string="Nombre Zoo"/>
                 <field name="ciudad" string="Ciudad"/>
             </tree>
