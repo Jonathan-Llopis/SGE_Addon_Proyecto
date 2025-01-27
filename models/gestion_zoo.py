@@ -30,12 +30,10 @@ class GestionZoo(models.Model):
     
     @api.onchange('unidad_extension', 'extension')
     def _onchange_extension(self):
-        # Corregir los valores de extensión dependiendo de la unidad seleccionada
-        if self.extension:
-            if self.unidad_extension == 'm':
-                self.extension = self.extension * 10000  # Corregir la asignación
-            elif self.unidad_extension == 'h':
-                self.extension = self.extension / 10000  # Corregir la asignación
+        if self.unidad_extension == 'h' and self.extension:
+            self.extension = self.extension / 10000  
+        elif self.unidad_extension == 'm' and self.extension:
+            self.extension = self.extension * 10000
 
     @api.depends('extension', 'unidad_extension')
     def _compute_extension_con_prefijo(self):

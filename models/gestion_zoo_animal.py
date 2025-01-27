@@ -24,7 +24,7 @@ class GestionZooAnimal(models.Model):
         default='europa'
     )
     
-    # Relacions proposadas:
+        # Relacions proposadas:
     #(M-1)Pais, (M-1)Habitat, (M-1)Especie, (M-1)Zoo  (M-1) Raza
     
     color_continente = fields.Char(
@@ -37,16 +37,16 @@ class GestionZooAnimal(models.Model):
             if animal.fecha_nacimiento:
                 today = date.today()
                 diffdate = today - animal.fecha_nacimiento
-                years = diffdate.days / 365
-                animal.edad = math.floor(years)
+                years = diffdate.days // 365  # Utilizando división entera para obtener la edad sin decimales
+                animal.edad = years
             else:
                 animal.edad = 0 
     
     @api.constrains('fecha_nacimiento')
     def _check_fecha_nacimiento(self):
         for record in self:
-            if record.fecha_nacimiento > date.today():
-                raise ValidationError('La fecha de nacimiento no debe ser más que la fecha actual')
+            if record.fecha_nacimiento and record.fecha_nacimiento > date.today():
+                raise ValidationError('La fecha de nacimiento no debe ser posterior a la fecha actual.')
 
     @api.depends('continente')
     def _compute_color_continente(self):
@@ -66,4 +66,4 @@ class GestionZooAnimal(models.Model):
             elif record.continente == 'antartida':
                 record.color_continente = '#FFFFFF'  
             else:
-                record.color_continente = '#FFFFFF'  
+                record.color_continente = '#FFFFFF' 

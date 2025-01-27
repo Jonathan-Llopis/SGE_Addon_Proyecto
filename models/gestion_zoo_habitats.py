@@ -21,10 +21,11 @@ class GestionZooHabitat(models.Model):
         ('aereo', 'Aéreo'),
         ('mixto', 'Mixto (Terrestre y Acuático)')
     ], string='Tipo de Hábitat')
+    
     temperatura_con_unidad = fields.Char(string="Temperatura con Unidad", compute="_compute_temperatura_con_unidad", store=True)
     
     _sql_constraints = [
-            ('nombre_habitat_unique', 'unique(nombre)', 'El nombre debe ser único'),
+        ('nombre_habitat_unique', 'unique(nombre)', 'El nombre del hábitat debe ser único'),
     ]
     
     @api.onchange('unidad_temperatura', 'temperatura')
@@ -34,14 +35,18 @@ class GestionZooHabitat(models.Model):
                 self.temperatura = (self.temperatura - 32) * 5.0 / 9.0
             elif self.unidad_temperatura == 'f':
                 self.temperatura = self.temperatura * 9.0 / 5.0 + 32
-                
+
     @api.depends('temperatura', 'unidad_temperatura')
     def _compute_temperatura_con_unidad(self):
         for record in self:
-            if record.unidad_temperatura == 'c':
-                record.temperatura_con_unidad = f"{record.temperatura} °C"
-            elif record.unidad_temperatura == 'f':
-                record.temperatura_con_unidad = f"{record.temperatura} °F"
+            if record.temperatura is not None:
+                if record.unidad_temperatura == 'c':
+                    record.temperatura_con_unidad = f"{record.temperatura} °C"
+                elif record.unidad_temperatura == 'f':
+                    record.temperatura_con_unidad = f"{record.temperatura} °F"
+            else:
+                record.temperatura_con_unidad = "N/A"
+
     
         # Relacions proposades:
             #(1-M)Animal
