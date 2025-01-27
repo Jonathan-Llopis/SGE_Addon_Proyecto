@@ -23,19 +23,16 @@ class GestionZooHabitat(models.Model):
     ], string='Tipo de Hábitat')
     
     temperatura_con_unidad = fields.Char(string="Temperatura con Unidad", compute="_compute_temperatura_con_unidad", store=True)
-    temperatura_establecida = fields.Boolean(default=False)
     _sql_constraints = [
         ('nombre_habitat_unique', 'unique(nombre)', 'El nombre del hábitat debe ser único'),
     ]
     
-    @api.onchange('unidad_temperatura', 'temperatura')
+    @api.onchange('unidad_temperatura')
     def _onchange_unidad_temperatura(self):
-        if self.temperatura and self.temperatura_establecida:
             if self.unidad_temperatura == 'c':
                 self.temperatura = (self.temperatura - 32) * 5.0 / 9.0
             elif self.unidad_temperatura == 'f':
                 self.temperatura = self.temperatura * 9.0 / 5.0 + 32
-        self.temperatura_establecida = True
 
     @api.depends('temperatura', 'unidad_temperatura')
     def _compute_temperatura_con_unidad(self):

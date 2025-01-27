@@ -23,20 +23,17 @@ class GestionZoo(models.Model):
     )
     extension_con_prefijo = fields.Char(string="Extensión con Prefijo", compute='_compute_extension_con_prefijo')
     sequence = fields.Integer('Sequence', default=1)
-    extension_establecida = fields.Boolean(default=False)
 
     _sql_constraints = [
         ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
     ]
     
-    @api.onchange('unidad_extension', 'extension')
+    @api.onchange('unidad_extension')
     def _onchange_extension(self):
-        if self.extension and self.extension_establecida:
             if self.unidad_extension == 'm':
                 self.extension = self.extension * 10000
             elif self.unidad_extension == 'h':
                 self.extension = self.extension / 10000
-        self.extension_establecida = True
 
 
     @api.depends('extension', 'unidad_extension')
