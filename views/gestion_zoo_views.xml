@@ -9,10 +9,12 @@
         <field name = "name">gestion.zoo.view.tree</field>
         <field name="model">gestion.zoo</field>
         <field name="arch" type="xml">
-            <tree string="Gestión Zoo" editable="bottom">
+            <tree string="Gestión Zoo">
                 <field name="sequence" widget="handle"/>
                 <field name="nombre" string="Nombre Zoo"/>
+                <field name ="tipo" string="Tipo de Zoo"/>
                 <field name="ciudad" string="Ciudad"/>
+                <field name="extension_con_prefijo" readonly="1"/>
             </tree>
         </field>
     </record>

@@ -9,9 +9,11 @@
         <field name = "name">gestion.zoo.habitat.view.tree</field>
         <field name="model">gestion.zoo.habitat</field>
         <field name="arch" type="xml">
-            <tree string="Gestión Habitats" editable="bottom">
+            <tree string="Gestión Habitats">
                 <field name="nombre" string="Nombre"/>
                 <field name="tipo_habitat" string="Tipo de Habitat"/>
+                <field name="temperatura_con_unidad" string="Temperatura"/>
+                <field name="humedad" string="Humedad Relativa"/>
             </tree>
         </field>
     </record>

@@ -3,8 +3,8 @@
 from odoo import models, fields
 
 class GestionZooRaza(models.Model):
-    _name = "gestion.zoo.raza"
-    _description = "Gestión Zoo Raza"
+    _name = 'gestion.zoo.raza'
+    _description = 'Gestión Zoo Raza'
 
     nombre = fields.Char( required=True)
     
