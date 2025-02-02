@@ -6,7 +6,7 @@ class GestionZooHabitat(models.Model):
     _name = 'gestion.zoo.habitat'
     _description = 'Gestión Zoo Hábitat'
 
-    nombre = fields.Char(required=True)
+    name = fields.Char(required=True, string="Nombre")
     temperatura = fields.Float(string='Temperatura')
     unidad_temperatura = fields.Selection([
         ('c', 'Celsius'),
@@ -25,7 +25,7 @@ class GestionZooHabitat(models.Model):
     
     temperatura_con_unidad = fields.Char(string="Temperatura con Unidad", compute="_compute_temperatura_con_unidad", store=True)
     _sql_constraints = [
-        ('nombre_habitat_unique', 'unique(nombre)', 'El nombre del hábitat debe ser único'),
+        ('name_habitat_unique', 'unique(name)', 'El name del hábitat debe ser único'),
     ]
     
     @api.onchange('unidad_temperatura')

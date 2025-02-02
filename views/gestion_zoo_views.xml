@@ -11,11 +11,54 @@
         <field name="arch" type="xml">
             <tree string="Gestión Zoo">
                 <field name="sequence" widget="handle"/>
-                <field name="nombre" string="Nombre Zoo"/>
+                <field name="name" string="Nombre Zoo"/>
                 <field name ="tipo" string="Tipo de Zoo"/>
                 <field name="ciudad" string="Ciudad"/>
-                <field name="extension_con_prefijo" readonly="1"/>
+                <field name="extension_calculada" readonly="1"/>
             </tree>
+        </field>
+    </record>
+    <record id="gestion_zoo_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.view.form</field>
+        <field name="model">gestion.zoo</field>
+        <field name="arch" type="xml">
+            <form string="Gestion Zoo">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="tipo" string="Tipo de Zoo"/>
+                                <field name="computo_animales"/>
+                                <field name="unidad_extension"/>
+                                <field name="extension_calculada"/>
+                            </group>
+                            <group>
+                                <field name="ciudad"/>
+                                <field name="provincia" widget="many2one" options="{'no_create': True}"/>
+                                <field name="pais"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="logo_zoo" widget="image" class="oe_avatar" options="{'size': [150, 150]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Animales del Zoo">
+                            <group>
+                                <group>
+                                    <field name="zoo_animales"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Habitats">
+                            <field name="habitats_zoo" readonly="True"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
 </odoo>

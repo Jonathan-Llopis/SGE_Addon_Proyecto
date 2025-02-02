@@ -10,7 +10,7 @@
         <field name="model">gestion.zoo.habitat</field>
         <field name="arch" type="xml">
             <tree string="Gestión Habitats">
-                <field name="nombre" string="Nombre"/>
+                <field name="name" string="name"/>
                 <field name="tipo_habitat" string="Tipo de Habitat"/>
                 <field name="temperatura_con_unidad" string="Temperatura"/>
                 <field name="humedad" string="Humedad Relativa"/>

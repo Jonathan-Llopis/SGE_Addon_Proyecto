@@ -4,10 +4,10 @@ class GestionZooEspecie(models.Model):
     _name = 'gestion.zoo.especie'
     _description = 'Gestión Zoo Especie'
 
-    nombre_vulgar = fields.Char(required=True)
-    nombre_cientifico = fields.Char(required=True)
+    name = fields.Char(required=True, string="Nombre Vulgar")
+    name_cientifico = fields.Char(required=True)
     peligro_extincion = fields.Boolean(default=False, string='Peligro Extinción')
-    animales_especie = fields.One2many("gestion.zoo.animal" "raza_especie")
+    animales_especie = fields.One2many("gestion.zoo.animal", "especie_animal")
     dieta = fields.Selection(selection=[('carnivora','Carnívora'),
                                         ('herbivora', 'Herbívora'),
                                         ('omnivora','Omnívora')], required=True, default = 'carnivora')

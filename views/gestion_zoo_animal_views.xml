@@ -10,6 +10,7 @@
         <field name="model">gestion.zoo.animal</field>
         <field name="arch" type="xml">
             <tree string="Gestión Animales">
+                <field name="name" string="Identificador Animal"/>
                 <field name="edad" string="Edad"/>
                 <field name="sexo" string="Sexo"/>
                 <field name="continente" string="Continente Origen" widget="badge" options="{'color_field': 'color_continente'}"/>

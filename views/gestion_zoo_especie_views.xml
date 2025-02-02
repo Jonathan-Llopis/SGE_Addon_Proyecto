@@ -10,8 +10,8 @@
         <field name="model">gestion.zoo.especie</field>
         <field name="arch" type="xml">
             <tree string="Gestión Especie">
-                <field name="nombre_vulgar" string="Nombre Vulgar"/>
-                <field name="nombre_cientifico" string="Nombre Científico"/>
+                <field name="name" string="Nombre Vulgar"/>
+                <field name="name_cientifico" string="name Científico"/>
                 <field name="peligro_extincion" string="Peligro de Extinción"/>
                 <field name="dieta" string="Dieta" widget="badge" options="{'color': 'color_dieta'}"/>
                 <field name="grado_peligro" string="Grado Peligro" widget="badge" options=" {'green': 'Seguro' , '2': 'yellow', '3': 'orange', '4': 'red', '5': 'darkred', '6': 'black'}"/>
