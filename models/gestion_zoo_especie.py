@@ -7,6 +7,7 @@ class GestionZooEspecie(models.Model):
     nombre_vulgar = fields.Char(required=True)
     nombre_cientifico = fields.Char(required=True)
     peligro_extincion = fields.Boolean(default=False, string='Peligro Extinción')
+    animales_especie = fields.One2many("gestion.zoo.animal" "raza_especie")
     dieta = fields.Selection(selection=[('carnivora','Carnívora'),
                                         ('herbivora', 'Herbívora'),
                                         ('omnivora','Omnívora')], required=True, default = 'carnivora')

@@ -7,7 +7,12 @@ class GestionZoo(models.Model):
     _description = 'Gestión Zoo'
 
     nombre = fields.Char(required=True)
+    logo_zoo = fields.Binary(string="Logo")
     ciudad = fields.Char()
+    provincia = fields.Many2one("res.country.state")
+    pais = fields.Many2one("es.country", string="País", compute='_compute_pais', store=True)
+    animalesZoo = fields.One2many("gestion.zoo.animal", "animales_zoo", string="Animales en el Zoo")
+    computoAnimales = fields.Integer(compute='_compute_numero_animales')
     extension = fields.Float(string='Extensión')
     unidad_extension = fields.Selection(
         selection=[('m', 'Metros Cuadrados'), ('h', 'Hectárea')],
@@ -23,6 +28,7 @@ class GestionZoo(models.Model):
     )
     extension_con_prefijo = fields.Char(string="Extensión con Prefijo", compute='_compute_extension_con_prefijo')
     sequence = fields.Integer('Sequence', default=1)
+    
 
     _sql_constraints = [
         ('nombre_zoo_unique', 'unique(nombre)', 'El nombre debe ser único'),
@@ -45,5 +51,15 @@ class GestionZoo(models.Model):
                 record.extension_con_prefijo = f"{record.extension} ha"
             else:
                 record.extension_con_prefijo = str(record.extension)
+                
+    @api.depends('provincia')
+    def _compute_pais(self):
+        for record in self:
+            record.pais = record.provincia.country_id if record.provincia else False
+            
+    @api.depends('animalesZoo')
+    def _compute_numero_animales(self):
+        for record in self:
+            record.computoAnimales = len(record.animalesZoo)
     
     # Relaciones propuestas (M-1) Provincia, (M-1) País, (1-M) Animal

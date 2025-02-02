@@ -7,6 +7,7 @@ class GestionZooRaza(models.Model):
     _description = 'Gestión Zoo Raza'
 
     nombre = fields.Char( required=True)
+    animales_raza = fields.One2many("gestion.zoo.animal" "raza_especie")
     
     _sql_constraints = [
             ('nombre_raza_unique', 'unique(nombre)', 'El nombre debe ser único'),
