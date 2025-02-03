@@ -6,34 +6,42 @@
         <field name="view_mode">tree,form</field>
     </record>
     <record id="gestion_zoo_view_tree" model="ir.ui.view">
-        <field name = "name">gestion.zoo.view.tree</field>
+        <field name="name">gestion.zoo.view.tree</field>
         <field name="model">gestion.zoo</field>
         <field name="arch" type="xml">
             <tree string="Gestión Zoo">
                 <field name="sequence" widget="handle"/>
                 <field name="name" string="Nombre Zoo"/>
-                <field name ="tipo" string="Tipo de Zoo"/>
+                <field name="tipo" string="Tipo de Zoo"/>
                 <field name="ciudad" string="Ciudad"/>
-                <field name="extension_calculada" readonly="1"/>
+                <field name="extension_calculada" readonly="True"/>
             </tree>
         </field>
     </record>
+
     <record id="gestion_zoo_view_form" model="ir.ui.view">
         <field name="name">gestion.zoo.view.form</field>
         <field name="model">gestion.zoo</field>
         <field name="arch" type="xml">
-            <form string="Gestion Zoo">
+            <form string="Gestión Zoo">
                 <sheet>
-                    <h1>
-                        <field name="name"/>
-                    </h1>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_habitats" type="action" class="oe_stat_button" icon="fa-tree">
+                            <field name="habitats_zoo_count" widget="statinfo" string="Habitats"/>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <group>
                                 <field name="tipo" string="Tipo de Zoo"/>
                                 <field name="computo_animales"/>
                                 <field name="unidad_extension"/>
-                                <field name="extension_calculada"/>
+                                <field name="extension_calculada" readonly="True"/>
                             </group>
                             <group>
                                 <field name="ciudad"/>
@@ -42,19 +50,15 @@
                             </group>
                         </group>
                         <group>
-                            <field name="logo_zoo" widget="image" class="oe_avatar" options="{'size': [150, 150]}"/>
+                            <field name="logo_zoo" widget="image" class="oe_avatar" options="{'size': [150, 150]}" nolabel="1"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Animales del Zoo">
-                            <group>
-                                <group>
-                                    <field name="zoo_animales"/>
-                                </group>
-                            </group>
+                            <field name="zoo_animales"/>
                         </page>
                         <page string="Habitats">
-                            <field name="habitats_zoo" readonly="True"/>
+                            <field name="habitats_zoo"/>
                         </page>
                     </notebook>
                 </sheet>

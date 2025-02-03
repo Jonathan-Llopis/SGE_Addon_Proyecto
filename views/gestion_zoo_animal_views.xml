@@ -17,4 +17,52 @@
             </tree>
         </field>
     </record>
+    <record id="gestion_zoo_animal_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.animal.view.form</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <form string="Gestión del Zoológico">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="sexo"/>
+                                <field name="edad"/>
+                                <field name="fecha_nacimiento"/>
+                            </group>
+                            <group>
+                                <field name="pais_origen"/>
+                                <field name="continente" string="Continente de Origen"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="imagen_animal" widget="image" class="oe_avatar" options="{'size': [150, 150]}" nolabel="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Información General">
+                            <group>
+                                <field name="animales_zoo" options="{'no_create': True}"/>
+                                <field name="habitat_animal" widget="many2one" options="{'no_create': True}"/>
+                            </group>
+                            <group>
+                                <group>
+                                     <field name="raza_animal" invisible="id and not raza_animal"/>
+                                    <field name="especie_animal"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Dieta">
+                            <group>
+                                <field name="dieta_animal" string="Dieta" readonly="True"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>

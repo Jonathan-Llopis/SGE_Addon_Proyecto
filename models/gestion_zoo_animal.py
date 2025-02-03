@@ -20,6 +20,7 @@ class GestionZooAnimal(models.Model):
     especie_animal = fields.Many2one("gestion.zoo.especie", string="Especie", required=True)
     raza_animal = fields.Many2one("gestion.zoo.raza", string="Raza del Animal")
     pais_origen = fields.Many2one("res.country", string="País de Origen", required=True)
+    dieta_animal = fields.Char(compute='_compute_dieta_animal', string='Dieta', readonly=True)
     continente = fields.Selection(
         selection=[('europa', 'Europa'),
                    ('asia', 'Asia'),
@@ -34,6 +35,8 @@ class GestionZooAnimal(models.Model):
     color_continente = fields.Char(
         string='Color Continente', compute='_compute_color_continente', store=True
     )
+     
+
     
     @api.depends('fecha_nacimiento')
     def get_age(self):
@@ -83,3 +86,7 @@ class GestionZooAnimal(models.Model):
                 record.name = f"{iniciales_name_cientifico}-{inicial_sexo}-{inicial_continente}-{fecha_nacimiento}"
             else:
                 record.name = ''
+    @api.depends('especie_animal')
+    def _compute_dieta_animal(self):
+        for record in self:
+            record.dieta_animal = record.especie_animal.dieta if record.especie_animal else ''

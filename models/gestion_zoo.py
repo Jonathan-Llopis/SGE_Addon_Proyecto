@@ -29,10 +29,12 @@ class GestionZoo(models.Model):
     )
     extension_calculada = fields.Char(string="Extensión", compute='_compute_extension_calculada')
     sequence = fields.Integer('Sequence', default=1)
-    
+    habitats_zoo_count = fields.Integer(compute='_compute_habitats_zoo_count')
+
+
 
     _sql_constraints = [
-        ('name_zoo_unique', 'unique(name)', 'El name debe ser único'),
+        ('name_zoo_unique', 'unique(name)', 'El Nombre debe ser único'),
     ]
     
     @api.onchange('unidad_extension')
@@ -70,3 +72,14 @@ class GestionZoo(models.Model):
         for record in self:
             habitats = record.zoo_animales.mapped('habitat_animal')
             record.habitats_zoo = habitats
+        
+    @api.depends('habitats_zoo')    
+    def _compute_habitats_zoo_count(self):
+        for record in self:
+            record.habitats_zoo_count = len(record.habitats_zoo)
+
+    
+    def action_view_habitats(self):
+        res = self.env.ref("gestion_zoo_habitats_action_zoo").read()[0]
+        res["domain"] = [("id", "in", self.habitats_zoo.ids)]
+        return res

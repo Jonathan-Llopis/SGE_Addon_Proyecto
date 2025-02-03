@@ -19,4 +19,38 @@
             </tree>
         </field>
     </record>
+    <record id="gestion_zoo_especie_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.especie.view.form</field>
+        <field name="model">gestion.zoo.especie</field>
+        <field name="arch" type="xml">
+            <form string="Gestión de Especies">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <h2>
+                        <field name="name_cientifico" string="Nombre Cientifico"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="familia"/>
+                            <field name="dieta"/>
+                        </group>
+                        <group>
+                            <field name="peligro_extincion"/>
+                            <field name="grado_peligro"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Animales de la Especie">
+                            <field name="animales_especie" readonly="True"/>
+                        </page>
+                        <page string="Se encuentra en">
+                            <field name="especies_zoo" readonly="True"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>

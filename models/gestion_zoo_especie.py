@@ -8,6 +8,7 @@ class GestionZooEspecie(models.Model):
     name_cientifico = fields.Char(required=True)
     peligro_extincion = fields.Boolean(default=False, string='Peligro Extinción')
     animales_especie = fields.One2many("gestion.zoo.animal", "especie_animal")
+    especies_zoo = fields.Many2many("gestion.zoo", compute="_compute_zoo" )
     dieta = fields.Selection(selection=[('carnivora','Carnívora'),
                                         ('herbivora', 'Herbívora'),
                                         ('omnivora','Omnívora')], required=True, default = 'carnivora')
@@ -71,3 +72,9 @@ class GestionZooEspecie(models.Model):
                 'molusco': '#00BFFF',
             }
             record.color_familia = color_map.get(record.familia, '#FFFFFF')
+    
+    @api.depends('animales_especie')
+    def _compute_zoo(self):
+        for record in self:
+            zoos = record.animales_especie.mapped('animales_zoo')
+            record.especies_zoo = zoos

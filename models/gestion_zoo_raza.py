@@ -10,7 +10,7 @@ class GestionZooRaza(models.Model):
     animales_raza = fields.One2many("gestion.zoo.animal", "raza_animal")
     
     _sql_constraints = [
-            ('name_raza_unique', 'unique(name)', 'El name debe ser único'),
+            ('name_raza_unique', 'unique(name)', 'El Nombre debe ser único'),
     ]
     
     # Relacions proposades:
