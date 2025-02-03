@@ -23,6 +23,9 @@
         <field name="arch" type="xml">
             <form string="Gestión del Zoológico">
                 <sheet>
+                <div class="oe_button_box">
+                 <field name="imagen_animal" widget="image" class="oe_avatar" options="{'size': [150, 150]}" nolabel="1"/>
+                </div>
                     <h1>
                         <field name="name"/>
                     </h1>
@@ -37,9 +40,6 @@
                                 <field name="pais_origen"/>
                                 <field name="continente" string="Continente de Origen"/>
                             </group>
-                        </group>
-                        <group>
-                            <field name="imagen_animal" widget="image" class="oe_avatar" options="{'size': [150, 150]}" nolabel="1"/>
                         </group>
                     </group>
                     <notebook>

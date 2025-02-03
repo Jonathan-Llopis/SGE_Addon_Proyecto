@@ -80,6 +80,6 @@ class GestionZoo(models.Model):
 
     
     def action_view_habitats(self):
-        res = self.env.ref("gestion_zoo_habitats_action_zoo").read()[0]
+        res = self.env.ref("gestion_zoo.gestion_zoo_habitats_action_zoo").read()[0]
         res["domain"] = [("id", "in", self.habitats_zoo.ids)]
         return res
