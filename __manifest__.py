@@ -20,7 +20,6 @@
         "views/gestion_zoo_raza_views.xml",
         "views/gestion_zoo_menu.xml",
     ],
-
     "installable": True,
     "auto_install": False,
 }

@@ -29,50 +29,10 @@ class GestionZooEspecie(models.Model):
                                             ('aracnido', 'Arácnido'),
                                             ('crustaceo', 'Crustáceo'),
                                             ('molusco', 'Molusco')], default = 'mamifero')
-    color_dieta = fields.Char(string='Color Dieta', compute='_compute_color_dieta', store=True)
-    color_grado_peligro = fields.Char(string='Color Grado Peligro', compute='_compute_color_grado_peligro', store=True)
-    color_familia = fields.Char(string='Color Familia', compute='_compute_color_familia', store=True)
 
-    @api.depends('dieta')
-    def _compute_color_dieta(self):
-        for record in self:
-            if record.dieta == 'carnivora':
-                record.color_dieta = '#FF0000'
-            elif record.dieta == 'herbivora':
-                record.color_dieta = '#00FF00'
-            elif record.dieta == 'omnivora':
-                record.color_dieta = '#FFFF00'
-            else:
-                record.color_dieta = '#FFFFFF'
 
-    @api.depends('grado_peligro')
-    def _compute_color_grado_peligro(self):
-        for record in self:
-            color_map = {
-                '1': '#00FF00',
-                '2': '#FFFF00',
-                '3': '#FFA500',
-                '4': '#FF4500',
-                '5': '#FF0000',
-                '6': '#8B0000',
-            }
-            record.color_grado_peligro = color_map.get(record.grado_peligro, '#FFFFFF')
+ 
 
-    @api.depends('familia')
-    def _compute_color_familia(self):
-        for record in self:
-            color_map = {
-                'mamifero': '#0000FF',
-                'ave': '#FF6347',
-                'reptil': '#008000',
-                'anfibio': '#00FFFF',
-                'pez': '#4682B4',
-                'insecto': '#FFD700',
-                'aracnido': '#800080',
-                'crustaceo': '#B22222',
-                'molusco': '#00BFFF',
-            }
-            record.color_familia = color_map.get(record.familia, '#FFFFFF')
     
     @api.depends('animales_especie')
     def _compute_zoo(self):

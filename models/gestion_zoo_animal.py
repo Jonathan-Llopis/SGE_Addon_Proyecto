@@ -32,12 +32,6 @@ class GestionZooAnimal(models.Model):
         default='europa', required=True
     )
     
-    color_continente = fields.Char(
-        string='Color Continente', compute='_compute_color_continente', store=True
-    )
-     
-
-    
     @api.depends('fecha_nacimiento')
     def get_age(self):
         for animal in self:
@@ -54,26 +48,6 @@ class GestionZooAnimal(models.Model):
         for record in self:
             if record.fecha_nacimiento and record.fecha_nacimiento > date.today():
                 raise ValidationError('La fecha de nacimiento no debe ser posterior a la fecha actual.')
-
-    @api.depends('continente')
-    def _compute_color_continente(self):
-        for record in self:
-            if record.continente == 'asia':
-                record.color_continente = '#FF6347'  
-            elif record.continente == 'africa':
-                record.color_continente = '#32CD32'  
-            elif record.continente == 'europa':
-                record.color_continente = '#1E90FF' 
-            elif record.continente == 'norteamerica':
-                record.color_continente = '#FFD700'  
-            elif record.continente == 'sudamerica':
-                record.color_continente = '#FFD700' 
-            elif record.continente == 'oceania':
-                record.color_continente = '#8A2BE2' 
-            elif record.continente == 'antartida':
-                record.color_continente = '#FFFFFF'  
-            else:
-                record.color_continente = '#FFFFFF' 
                 
     @api.depends('especie_animal', 'sexo', 'continente', 'fecha_nacimiento')
     def _compute_identificador_animal(self):
