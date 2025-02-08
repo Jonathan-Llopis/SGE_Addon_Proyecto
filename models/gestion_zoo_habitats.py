@@ -14,7 +14,7 @@ class GestionZooHabitat(models.Model):
     ], string='Unidad de Temperatura', default='c')
     humedad = fields.Integer(string= 'Humedad Relativa %')     
     animales_habitat = fields.One2many("gestion.zoo.animal", "habitat_animal")
-    especie_habitats = fields.Many2many("gestion.zoo.especie",  compute="_compute_especies")
+    especie_habitats = fields.One2many("gestion.zoo.especie", "habitat_especies")
     tipo_habitat = fields.Selection(selection=[
         ('terrestre', 'Terrestre'), 
         ('acuatico', 'Acuático'), 
@@ -47,9 +47,4 @@ class GestionZooHabitat(models.Model):
             else:
                 record.temperatura_con_unidad = "N/A"
 
-    @api.depends('animales_habitat')
-    def _compute_especies(self):
-        for record in self:
-            especies = record.animales_habitat.mapped('especie_animal')
-            record.especie_habitats = especies
-    
+

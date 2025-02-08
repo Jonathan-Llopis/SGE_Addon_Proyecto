@@ -28,33 +28,40 @@
                         <button name="action_view_habitats" type="object" class="oe_stat_button" icon="fa-tree">
                             <field name="habitats_zoo_count" widget="statinfo" string="Habitats"/>
                         </button>
-                        <field name="logo_zoo" widget="image" class="oe_avatar" options="{'size': [150, 150]}" nolabel="1"/>
+                        <field name="logo_zoo" widget="image" class="oe_avatar" options="{'size': [200, 200]}" nolabel="1"/>
                     </div>
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
                         </h1>
+                        <h2>
+                            <field name="direccion_completa" readonly="True"/>
+                        </h2>
+                        <field name="extension_calculada" readonly="True"/>
                     </div>
                     <notebook>
                         <page string="Información Zoo">
-                        <group>
                             <group>
-                                <field name="tipo" string="Tipo de Zoo"/>
-                                <field name="computo_animales"/>
-                                <field name="unidad_extension"/>
-                                <field name="extension_calculada" readonly="True"/>
-                            </group>
-                            <group>
-                                <field name="ciudad"/>
-                                <field name="provincia" widget="many2one" options="{'no_create': True}"/>
-                                <field name="pais"/>
-                            </group>
+                                <group>
+                                    <field name="tipo" string="Tipo de Zoo"/>
+                                    <field name="computo_animales"/>
+                                    <field name="unidad_extension"/>
+                                    <field name="extension"/>
+                                </group>
+                                <group>
+                                    <field name="ciudad"/>
+                                    <field name="provincia" widget="many2one" options="{'no_create': True}"/>
+                                    <field name="pais"/>
+                                </group>
                             </group>
                         </page>
                         <page string="Animales del Zoo">
                             <field name="zoo_animales"/>
+                            especies_zoo
                         </page>
-
+                        <page string="Especies en el Zoo">
+                            <field name="especies_zoo"/>                         
+                        </page>
                     </notebook>
                 </sheet>
             </form>

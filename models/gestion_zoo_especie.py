@@ -9,6 +9,7 @@ class GestionZooEspecie(models.Model):
     peligro_extincion = fields.Boolean(default=False, string='Peligro Extinción')
     animales_especie = fields.One2many("gestion.zoo.animal", "especie_animal")
     especies_zoo = fields.Many2many("gestion.zoo", compute="_compute_zoo" )
+    habitat_especies = fields.Many2one("gestion.zoo.habitat")
     dieta = fields.Selection(selection=[('carnivora','Carnívora'),
                                         ('herbivora', 'Herbívora'),
                                         ('omnivora','Omnívora')], required=True, default = 'carnivora')

@@ -14,7 +14,9 @@ class GestionZoo(models.Model):
     zoo_animales = fields.One2many("gestion.zoo.animal", "animales_zoo", string="Animales en el Zoo")
     computo_animales = fields.Integer(compute='_compute_numero_animales')
     habitats_zoo = fields.Many2many("gestion.zoo.habitat", compute="_compute_habitats", string="Habitats")
+    especies_zoo =fields.Many2many("gestion.zoo.especie", compute="_compute_especies", string="Especies")
     extension = fields.Float(string='Extensión')
+    direccion_completa = fields.Char(compute="_compute_direccion", string="Dirección:")
     unidad_extension = fields.Selection(
         selection=[('m', 'Metros Cuadrados'), ('h', 'Hectárea')],
         string='Unidad de Extensión', default='m'
@@ -30,6 +32,7 @@ class GestionZoo(models.Model):
     extension_calculada = fields.Char(string="Extensión", compute='_compute_extension_calculada')
     sequence = fields.Integer('Sequence', default=1)
     habitats_zoo_count = fields.Integer(compute='_compute_habitats_zoo_count')
+   
 
 
 
@@ -78,8 +81,23 @@ class GestionZoo(models.Model):
         for record in self:
             record.habitats_zoo_count = len(record.habitats_zoo)
 
+    @api.depends('zoo_animales')
+    def _compute_especies(self):
+        for record in self:
+            especies = record.zoo_animales.mapped('especie_animal')
+            record.especies_zoo = especies
+        
     
     def action_view_habitats(self):
         res = self.env.ref("gestion_zoo.gestion_zoo_habitats_action_zoo").read()[0]
         res["domain"] = [("id", "in", self.habitats_zoo.ids)]
         return res
+    
+    @api.depends('ciudad', 'provincia', 'pais')
+    def _compute_direccion(self):
+        for record in self:
+            ciudad = record.ciudad if record.ciudad else ''
+            provincia = record.provincia.name if record.provincia else ''
+            pais = record.pais.name if record.pais else ''
+            direccion = f"{ciudad} ({provincia}) {pais}"
+            record.direccion_completa = direccion

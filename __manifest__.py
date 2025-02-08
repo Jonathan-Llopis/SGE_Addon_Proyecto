@@ -20,6 +20,11 @@
         "views/gestion_zoo_raza_views.xml",
         "views/gestion_zoo_menu.xml",
     ],
+      'assets': {
+        'web.assets_backend': [
+            'static\src\js\field_utils.js',
+        ],
+    },
     "installable": True,
     "auto_install": False,
 }
