@@ -1,4 +1,4 @@
-odoo.define('your_module.field_utils', function (require) {
+odoo.define('gestion.zoo.field_utils', function (require) {
     "use strict";
 
     var fieldUtils = require('web.field_utils');

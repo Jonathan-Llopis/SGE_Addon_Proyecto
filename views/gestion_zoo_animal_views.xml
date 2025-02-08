@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="gestion_zoo_animal_action_zoo" model="ir.actions.act_window">
         <field name="name">Gestión Zoo Animales View</field>
@@ -6,14 +5,14 @@
         <field name="view_mode">tree,form</field>
     </record>
     <record id="gestion_zoo_animal_view_tree" model="ir.ui.view">
-        <field name = "name">gestion.zoo.animal.view.tree</field>
+        <field name="name">gestion.zoo.animal.view.tree</field>
         <field name="model">gestion.zoo.animal</field>
         <field name="arch" type="xml">
             <tree string="Gestión Animales">
                 <field name="name" string="Identificador Animal"/>
                 <field name="edad" string="Edad"/>
-                  <field name="sexo" widget="badge" options="{'macho': 'macho', 'hembra': 'hembra'}"/>
-                <field name="continente" string="Continente Origen" widget="badge" options="{'color_field': 'color_continente'}"/>
+                <field name="sexo" widget="badge" decoration-danger="sexo == 'hembra'" decoration-info="sexo == 'macho'"/>
+                <field name="continente" string="Continente Origen" widget="badge" options="{'color_field': 'record.color_continente'}"/>
             </tree>
         </field>
     </record>
@@ -39,7 +38,7 @@
                             <group>
                                 <field name="fecha_nacimiento"/>
                                 <field name="pais_origen"/>
-                                <field name="continente" string="Continente de Origen"/>
+                                <field name="continente" string="Continente de Origen" widget="badge" options="{'color_field': 'color_continente'}"/>
                             </group>
                         </group>
                     </group>
@@ -62,3 +61,4 @@
         </field>
     </record>
 </odoo>
+        
