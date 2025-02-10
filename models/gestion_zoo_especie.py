@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class GestionZooEspecie(models.Model):
     _name = 'gestion.zoo.especie'
@@ -39,3 +40,9 @@ class GestionZooEspecie(models.Model):
         for record in self:
             zoos = record.animales_especie.mapped('animales_zoo')
             record.especies_zoo = zoos
+    
+    @api.ondelete(at_uninstall=False)
+    def delete_especie(self):
+        for especie in self:
+            if especie.animales_especie:
+                raise UserError("No se puede borrar un zoológico que tiene animales.")

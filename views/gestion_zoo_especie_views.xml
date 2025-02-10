@@ -55,4 +55,27 @@
             </form>
         </field>
     </record>
+    <record id="gestion_zoo_especie_view_search" model="ir.ui.view">
+    <field name="name">gestion.zoo.especie.view.search</field>
+    <field name="model">gestion.zoo.especie</field>
+    <field name="arch" type="xml">
+        <search string="Buscar Especies">
+            <field name="name" string="Nombre Vulgar"/>
+            <field name="name_cientifico" string="Nombre Científico"/>
+            <field name="peligro_extincion" string="Peligro de Extinción"/>
+            <field name="dieta" string="Dieta"/>
+            <field name="grado_peligro" string="Grado de Peligro"/>
+            <field name="familia" string="Familia"/>
+            <separator/>
+            <filter string="En Peligro de Extinción" name="peligro_extincion_filter" domain="[('peligro_extincion', '=', True)]"/>
+            <filter string="Peligrosos" name="peligrosos_filter" domain="[('grado_peligro', '>=', '4')]"/>
+            <group expand="1" string="Agrupar Por">
+                <field name="familia" context="{'group_by':'familia'}"/>
+                <field name="dieta" context="{'group_by':'dieta'}"/>
+                <field name="peligro_extincion" context="{'group_by':'peligro_extincion'}"/>
+                <field name="grado_peligro" context="{'group_by':'grado_peligro'}"/>
+            </group>
+        </search>
+    </field>
+</record>
 </odoo>

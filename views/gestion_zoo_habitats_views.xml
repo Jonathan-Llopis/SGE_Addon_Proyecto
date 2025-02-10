@@ -45,4 +45,27 @@
             </form>
         </field>
     </record>
+    <record id="gestion_zoo_habitats_view_search" model="ir.ui.view">
+        <field name="name">gestion.zoo.habitat.view.search</field>
+        <field name="model">gestion.zoo.habitat</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Hábitats">
+                <field name="name" string="Nombre del Hábitat"/>
+                <field name="tipo_habitat" string="Tipo de Hábitat"/>
+                <field name="temperatura_con_unidad" string="Temperatura"/>
+                <field name="humedad" string="Humedad Relativa"/>
+                <separator/>
+                <filter string="Terrestre" name="terrestre_filter" domain="[('tipo_habitat', '=', 'terrestre')]"/>
+                <filter string="Acuático" name="acuatico_filter" domain="[('tipo_habitat', '=', 'acuatico')]"/>
+                <filter string="Marino" name="marino_filter" domain="[('tipo_habitat', '=', 'marino')]"/>
+                <filter string="Aéreo" name="aereo_filter" domain="[('tipo_habitat', '=', 'aereo')]"/>
+                <filter string="Mixto" name="mixto_filter" domain="[('tipo_habitat', '=', 'mixto')]"/>
+                <group expand="1" string="Agrupar Por">
+                    <field name="tipo_habitat" context="{'group_by':'tipo_habitat'}"/>
+                    <field name="temperatura_con_unidad" context="{'group_by':'temperatura_con_unidad'}"/>
+                    <field name="humedad" context="{'group_by':'humedad'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

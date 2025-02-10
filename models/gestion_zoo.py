@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class GestionZoo(models.Model):
     _name = 'gestion.zoo'
@@ -46,7 +47,14 @@ class GestionZoo(models.Model):
                 self.extension = self.extension * 10000
             elif self.unidad_extension == 'h':
                 self.extension = self.extension / 10000
-
+                
+                
+    
+    @api.ondelete(at_uninstall=False)
+    def delete_zoo(self):
+        for zoo in self:
+            if zoo.zoo_animales:
+                raise UserError("No se puede borrar un zoológico que tiene animales.")
 
     @api.depends('extension', 'unidad_extension')
     def _compute_extension_calculada(self):
