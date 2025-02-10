@@ -16,7 +16,7 @@ class GestionZooAnimal(models.Model):
     fecha_nacimiento = fields.Date(required=True)
     edad = fields.Integer(compute='get_age', readonly=True)
     animales_zoo = fields.Many2one("gestion.zoo", string="Pertenece al Zoo", required=True)
-    habitat_animal = fields.Many2one("gestion.zoo.habitat", string="Habitat del Animal", required=True)
+    habitat_animal = fields.Many2one("gestion.zoo.habitat", string="Habitat del Animal",compute="_compute_zoo_habitat")
     especie_animal = fields.Many2one("gestion.zoo.especie", string="Especie", required=True)
     raza_animal = fields.Many2one("gestion.zoo.raza", string="Raza del Animal")
     pais_origen = fields.Many2one("res.country", string="País de Origen", required=True)
@@ -32,6 +32,11 @@ class GestionZooAnimal(models.Model):
         default='europa', required=True
     )
     
+    @api.depends('especie_animal')
+    def _compute_zoo_habitat(self):
+        for record in self:
+            record.habitat_animal = record.especie_animal.mapped('habitat_especies')
+            
     @api.depends('fecha_nacimiento')
     def get_age(self):
         for animal in self:

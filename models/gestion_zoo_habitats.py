@@ -13,7 +13,6 @@ class GestionZooHabitat(models.Model):
         ('f', 'Fahrenheit')
     ], string='Unidad de Temperatura', default='c')
     humedad = fields.Integer(string= 'Humedad Relativa %')     
-    animales_habitat = fields.One2many("gestion.zoo.animal", "habitat_animal")
     especie_habitats = fields.One2many("gestion.zoo.especie", "habitat_especies")
     tipo_habitat = fields.Selection(selection=[
         ('terrestre', 'Terrestre'), 
