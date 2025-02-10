@@ -80,7 +80,7 @@
                 <field name="logo_zoo"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click" style="border-radius: 15px; overflow: hidden; border: 1px solid #ddd; background-color: rgb(185, 180, 180);">
+                        <div t-attf-class="oe_kanban_global_click" style="border-radius: 15px; overflow: hidden; border: 1px solid #ddd;">
                             <div class="o_kanban_image">
                                 <img alt="Logo" t-att-src="kanban_image('gestion.zoo', 'logo_zoo', record.id.raw_value)" style="width: 200px; height: auto;"/>
                             </div>

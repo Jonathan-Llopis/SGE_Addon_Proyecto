@@ -32,6 +32,17 @@ class GestionZooAnimal(models.Model):
         default='europa', required=True
     )
     
+    
+    estado_salud = fields.Selection([
+        ('sano', 'Sano'),
+        ('enfermo', 'Enfermo')
+    ], default='sano', string='Estado de Salud')
+
+    @api.depends('estado_salud')
+    def cambiar_estado_salud(self):
+        for animal in self:
+            animal.estado_salud = 'enfermo' if animal.estado_salud == 'sano' else 'sano'
+
     @api.depends('especie_animal')
     def _compute_zoo_habitat(self):
         for record in self:
@@ -69,3 +80,4 @@ class GestionZooAnimal(models.Model):
     def _compute_dieta_animal(self):
         for record in self:
             record.dieta_animal = record.especie_animal.dieta if record.especie_animal else ''
+            

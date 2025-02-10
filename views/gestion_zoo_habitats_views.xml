@@ -60,6 +60,10 @@
                 <filter string="Marino" name="marino_filter" domain="[('tipo_habitat', '=', 'marino')]"/>
                 <filter string="Aéreo" name="aereo_filter" domain="[('tipo_habitat', '=', 'aereo')]"/>
                 <filter string="Mixto" name="mixto_filter" domain="[('tipo_habitat', '=', 'mixto')]"/>
+                <filter string="Temperatura Calurosa" name="high_temp_filter" domain="[('temperatura', '>', 9)]"/>
+                <filter string="Temperatura Fria" name="low_temp_filter" domain="[('temperatura','&lt;', 10)]"/>
+                <filter string="Humedad Alta" name="high_humidity_filter" domain="[('humedad', '>', 50)]"/>
+                <filter string="Humedad Baja" name="low_humidity_filter" domain="[('humedad', '&lt;', 50)]"/>
                 <group expand="1" string="Agrupar Por">
                     <field name="tipo_habitat" context="{'group_by':'tipo_habitat'}"/>
                     <field name="temperatura_con_unidad" context="{'group_by':'temperatura_con_unidad'}"/>
