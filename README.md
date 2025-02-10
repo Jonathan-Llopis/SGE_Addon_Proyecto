@@ -77,4 +77,4 @@ Si tienes preguntas, comentarios o sugerencias, no dudes en contactarnos:
 
 - Autor: Jonathan Llopis
 - Correo: jonathan.llopis.linares@gmail.com
-- GitHub: [Jonathan Llopis]([https://github.com/tuusuario](https://github.com/Jonathan-Llopis))
+- GitHub: [Jonathan Llopis](https://github.com/Jonathan-Llopis)
