@@ -75,6 +75,6 @@ Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
 
 Si tienes preguntas, comentarios o sugerencias, no dudes en contactarnos:
 
-- Autor: [Tu Nombre/Organización]
-- Correo: tuemail@example.com
-- GitHub: [https://github.com/tuusuario](https://github.com/tuusuario)
+- Autor: Jonathan Llopis
+- Correo: jonathan.llopis.linares@gmail.com
+- GitHub: [Jonathan Llopis](https://github.com/Jonathan-Llopis)
