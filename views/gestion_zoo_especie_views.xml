@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_especie_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Especie View</field>
+        <field name="res_model">gestion.zoo.especie</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="gestion_zoo_especie_view_tree" model="ir.ui.view">
+        <field name="name">gestion.zoo.especie.view.tree</field>
+        <field name="model">gestion.zoo.especie</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Especie" decoration-danger="peligro_extincion == True">
+                <field name="name" string="Nombre Vulgar"/>
+                <field name="name_cientifico" string="Nombre Científico"/>
+                <field name="peligro_extincion" string="Peligro de Extinción"/>
+                <field name="dieta" string="Dieta" widget="badge" decoration-danger="dieta == 'carnivora'" decoration-info="dieta == 'omnivora'" decoration-success="dieta == 'herbivora'"/>
+                <field name="grado_peligro" widget="badge" decoration-danger="grado_peligro == '4' or grado_peligro == '5'" decoration-warning="grado_peligro == '3'" decoration-info="grado_peligro == '2'" decoration-success="grado_peligro == '1'" decoration-primary="grado_peligro == '5'" decoration-muted="grado_peligro == '6'"/>
+                <field name="familia" widget="badge" decoration-primary="familia == 'mamifero'" decoration-danger="familia == 'ave' or familia == 'molusco'" decoration-info="familia == 'reptil' or familia == 'crustaceo'" decoration-success="familia == 'anfibio'" decoration-warning="familia == 'pez' or familia == 'aracnido'" decoration-muted="familia == 'insecto' or familia == 'aracnido'"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="gestion_zoo_especie_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.especie.view.form</field>
+        <field name="model">gestion.zoo.especie</field>
+        <field name="arch" type="xml">
+            <form string="Gestión de Especies">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <h2>
+                        <field name="name_cientifico" string="Nombre Cientifico"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="familia"/>
+                            <field name="dieta"/>
+                            <field name ="habitat_especies"/>
+                        </group>
+                        <group>
+                            <field name="peligro_extincion"/>
+                            <field name="grado_peligro"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Animales de la Especie">
+                            <field name="animales_especie" readonly="True"/>
+                        </page>
+                        <page string="Se encuentra en">
+                            <field name="especies_zoo" readonly="True"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gestion_zoo_especie_view_search" model="ir.ui.view">
+    <field name="name">gestion.zoo.especie.view.search</field>
+    <field name="model">gestion.zoo.especie</field>
+    <field name="arch" type="xml">
+        <search string="Buscar Especies">
+            <field name="name" string="Nombre Vulgar"/>
+            <field name="name_cientifico" string="Nombre Científico"/>
+            <field name="peligro_extincion" string="Peligro de Extinción"/>
+            <field name="dieta" string="Dieta"/>
+            <field name="grado_peligro" string="Grado de Peligro"/>
+            <field name="familia" string="Familia"/>
+            <separator/>
+            <filter string="En Peligro de Extinción" name="peligro_extincion_filter" domain="[('peligro_extincion', '=', True)]"/>
+            <filter string="Peligrosos" name="peligrosos_filter" domain="[('grado_peligro', '>=', '4')]"/>
+            <group expand="1" string="Agrupar Por">
+                <field name="familia" context="{'group_by':'familia'}"/>
+                <field name="dieta" context="{'group_by':'dieta'}"/>
+                <field name="peligro_extincion" context="{'group_by':'peligro_extincion'}"/>
+                <field name="grado_peligro" context="{'group_by':'grado_peligro'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_animal_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Animales View</field>
+        <field name="res_model">gestion.zoo.animal</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="gestion_zoo_animal_view_tree" model="ir.ui.view">
+        <field name="name">gestion.zoo.animal.view.tree</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Animales" decoration-danger="estado_salud == 'enfermo'">
+                <field name="name" string="Identificador Animal"/>
+                <field name="edad" string="Edad"/>
+                <field name="sexo" widget="badge" decoration-danger="sexo == 'hembra'" decoration-info="sexo == 'macho'"/>
+                <field name="continente" widget="badge" decoration-primary="continente == 'europa'" decoration-info="continente == 'asia'" decoration-danger="continente == 'africa'" decoration-success="continente == 'norteamerica'" decoration-warning="continente == 'sudamerica'" decoration-muted="continente == 'oceania' or continente == 'antartida'"/>
+                <field name="estado_salud"/>
+                <button name="cambiar_estado_salud" string="Cambiar Estado Animal" type="object" icon="fa-heartbeat"/>
+            </tree>
+        </field>
+    </record>
+    <record id="gestion_zoo_animal_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.animal.view.form</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <form string="Gestión del Zoológico">
+                <sheet>
+                    <div class="oe_button_box">
+                        <field name="imagen_animal" widget="image" class="oe_avatar" options="{'size':[160, 160]}" nolabel="1"/>
+                    </div>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <h2>
+                        <field name="estado_salud"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="sexo"/>
+                                <field name="dieta_animal" string="Dieta" readonly="True"/>
+                                <field name="edad"/>
+                            </group>
+                            <group>
+                                <field name="fecha_nacimiento"/>
+                                <field name="pais_origen"/>
+                                <field name="continente" string="Continente de Origen"/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Información General">
+
+                            <group>
+                                <field name="animales_zoo" options="{'no_create': True}"/>
+                                <field name="raza_animal" invisible="id and not raza_animal"/>
+                                <field name="especie_animal"/>
+                                <field name="habitat_animal" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gestion_zoo_animal_kanban_view" model="ir.ui.view">
+        <field name="name">gestion.zoo.animal.kanban</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <kanban class="o_gestion_zoo_animal_kanban">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="edad"/>
+                <field name="especie_animal"/>
+                <field name ="habitat_animal"/>
+                <field name="imagen_animal"/>
+                <field name ="estado_salud"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click" t-att-style="record.estado_salud.raw_value == 'enfermo' ? 'border-radius: 15px; overflow: hidden; border: 1px solid #ddd; background-color: rgb(110, 18, 18); color: white;' : 'border-radius: 15px; overflow: hidden; border: 1px solid #ddd; background-color: rgb(221, 212, 212);'">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <img alt="Imagen" t-att-src="kanban_image('gestion.zoo.animal', 'imagen_animal', record.id.raw_value)" style="width: 500px; height: 250px;"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title" t-att-style="record.estado_salud.raw_value == 'enfermo' ? 'color: white;' : ''">
+                                    <field name="name"/>
+                                </strong>
+                                <div t-if="record.especie_animal.value">
+                                Especie: <t t-esc="record.especie_animal.value"/>
+                                </div>
+                                <div t-if="record.edad.value">
+                                Edad: <t t-esc="record.edad.value"/>
+                                </div>
+                                <div t-if="record.habitat_animal.value">
+                                Habitat: <t t-esc="record.habitat_animal.value"/>
+                                </div>
+                                <div style="text-align: right; margin-top: 10px;">
+                                    <button name="cambiar_estado_salud" string="Cambiar Estado" type="object" icon="fa-heartbeat"/>
+                                    <div t-if="record.estado_salud.value">
+                                    Estado: <t t-esc="record.estado_salud.value"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="gestion_zoo_animal_view_search" model="ir.ui.view">
+        <field name="name">gestion.zoo.animal.view.search</field>
+        <field name="model">gestion.zoo.animal</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Animales">
+                <field name="name" string="Identificador Animal"/>
+                <field name="edad" string="Edad"/>
+                <field name="sexo"/>
+                <field name="especie_animal" string="Especie"/>
+                <field name="raza_animal" string="Raza"/>
+                <field name="pais_origen" string="País de Origen"/>
+                <field name="continente" string="Continente"/>
+                <separator/>
+                <filter string="Hembras" name="hembra_filter" domain="[('sexo', '=', 'hembra')]"/>
+                <filter string="Machos" name="macho_filter" domain="[('sexo', '=', 'macho')]"/>
+                <filter string="En Peligro de Extinción" name="peligro_extincion_filter" domain="[('especie_animal.peligro_extincion', '=', True)]"/>
+                <filter string="Peligrosos" name="peligrosos_filter" domain="[('especie_animal.grado_peligro', '>=', '4')]"/>
+                <filter string="Carnívora" name="carnivora_filter" domain="[('especie_animal.dieta', '=', 'carnivora')]"/>
+                <filter string="Herbívora" name="herbivora_filter" domain="[('especie_animal.dieta', '=', 'herbivora')]"/>
+                <filter string="Omnívora" name="omnivora_filter" domain="[('especie_animal.dieta', '=', 'omnivora')]"/>
+                <filter string="Sanos" name="enfermo_filter" domain="[('estado_salud', '=', 'sano')]"/>
+                <filter string="Enfermos" name="sano_filter" domain="[('estado_salud', '=', 'enfermo')]"/>
+                <group expand="1" string="Agrupar Por">
+                    <field name="sexo" context="{'group_by':'sexo'}"/>
+                    <field name="especie_animal" context="{'group_by':'especie_animal'}"/>
+                    <field name="raza_animal" context="{'group_by':'raza_animal'}"/>
+                    <field name="pais_origen" context="{'group_by':'pais_origen'}"/>
+                    <field name="continente" context="{'group_by':'continente'}"/>
+                    <field name="dieta_animal" context="{'group_by':'dieta_animal'}"/>
+                    <field name="estado_salud" context="{'group_by':'estado_salud'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
+        

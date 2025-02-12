@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gestion_zoo_habitats_action_zoo" model="ir.actions.act_window">
+        <field name="name">Gestión Zoo Habitats View</field>
+        <field name="res_model">gestion.zoo.habitat</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="gestion_zoo_habitats_view_tree" model="ir.ui.view">
+        <field name = "name">gestion.zoo.habitat.view.tree</field>
+        <field name="model">gestion.zoo.habitat</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión Habitats">
+                <field name="name" string="Nombre Habitat"/>
+                <field name="tipo_habitat" string="Tipo de Habitat"/>
+                <field name="temperatura_con_unidad" string="Temperatura"/>
+                <field name="humedad" string="Humedad Relativa"/>
+            </tree>
+        </field>
+    </record>
+    <record id="gestion_zoo_habitat_view_form" model="ir.ui.view">
+        <field name="name">gestion.zoo.habitat.view.form</field>
+        <field name="model">gestion.zoo.habitat</field>
+        <field name="arch" type="xml">
+            <form string="Gestión de Habitats">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="unidad_temperatura"/>
+                            <field name="temperatura"/>
+                            <field name="humedad"/>
+                        </group>
+                        <group>
+                            <field name="tipo_habitat"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Especies en habitat">
+                            <field name="especie_habitats" editable="bottom"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="gestion_zoo_habitats_view_search" model="ir.ui.view">
+        <field name="name">gestion.zoo.habitat.view.search</field>
+        <field name="model">gestion.zoo.habitat</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Hábitats">
+                <field name="name" string="Nombre del Hábitat"/>
+                <field name="tipo_habitat" string="Tipo de Hábitat"/>
+                <field name="temperatura_con_unidad" string="Temperatura"/>
+                <field name="humedad" string="Humedad Relativa"/>
+                <separator/>
+                <filter string="Terrestre" name="terrestre_filter" domain="[('tipo_habitat', '=', 'terrestre')]"/>
+                <filter string="Acuático" name="acuatico_filter" domain="[('tipo_habitat', '=', 'acuatico')]"/>
+                <filter string="Marino" name="marino_filter" domain="[('tipo_habitat', '=', 'marino')]"/>
+                <filter string="Aéreo" name="aereo_filter" domain="[('tipo_habitat', '=', 'aereo')]"/>
+                <filter string="Mixto" name="mixto_filter" domain="[('tipo_habitat', '=', 'mixto')]"/>
+                <filter string="Temperatura Calurosa" name="high_temp_filter" domain="[('temperatura', '>', 9)]"/>
+                <filter string="Temperatura Fria" name="low_temp_filter" domain="[('temperatura','&lt;', 10)]"/>
+                <filter string="Humedad Alta" name="high_humidity_filter" domain="[('humedad', '>', 50)]"/>
+                <filter string="Humedad Baja" name="low_humidity_filter" domain="[('humedad', '&lt;', 50)]"/>
+                <group expand="1" string="Agrupar Por">
+                    <field name="tipo_habitat" context="{'group_by':'tipo_habitat'}"/>
+                    <field name="temperatura_con_unidad" context="{'group_by':'temperatura_con_unidad'}"/>
+                    <field name="humedad" context="{'group_by':'humedad'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
