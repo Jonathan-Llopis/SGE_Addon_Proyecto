@@ -19,7 +19,7 @@
         "views/gestion_zoo_habitats_views.xml",
         "views/gestion_zoo_raza_views.xml",
         "views/gestion_zoo_menu.xml",
-        "views\gestion_zoo_alimento_view.xml",
+        "views/gestion_zoo_alimento_view.xml",
     ],
 
     "installable": True,

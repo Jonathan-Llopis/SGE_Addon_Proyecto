@@ -6,3 +6,4 @@ from . import gestion_zoo_especie
 from . import gestion_zoo_habitats
 from . import gestion_zoo_raza
 from . import res_country_state
+from . import purchase_order

@@ -3,8 +3,10 @@
     <menuitem id="gestion_zoo_menu_root" name="Gestión Zoo">
         <menuitem id="gestion_zoo_first_level_menu" name="Gestión Zoo">
             <menuitem id="gestion_zoo_menu_action_zoo" action="gestion_zoo_action_zoo" name="Mis Zoos"/>
-            <menuitem id="gestion_zoo_menu_action_animals" action="gestion_zoo_animal_action_zoo" name="Mis Animales"/>
-            <menuitem id="gestion_zoo_menu_action_alimentos" action="gestion_zoo_alimento_action" name="Mis Alimentos"/>
+            <menuitem id="gestion_zoo_menu_action_animals" action="gestion_zoo_animal_action_zoo" name="Mis Animales"/>      
+        </menuitem>
+         <menuitem id="gestion_zoo_first_gestion_menu" name="Gestion Comercial">
+           <menuitem id="gestion_zoo_menu_action_alimentos" action="gestion_zoo_alimento_action" name="Compras"/>
         </menuitem>
         <menuitem id="gestion_zoo_first_setting_menu" name="Configuracion">
             <menuitem id="gestion_zoo_menu_action_especie" action="gestion_zoo_especie_action_zoo" name="Gestión Especies"/>
