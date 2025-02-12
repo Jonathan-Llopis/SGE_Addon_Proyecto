@@ -10,7 +10,7 @@
     "author": "Jonathan Llopis",
     "license": "LGPL-3",
     "application": True,
-    "depends": ["base", 'web'], 
+    "depends": ["base", 'web', "purchase"], 
     "data": [
         "security/ir.model.access.csv",
         "views/gestion_zoo_views.xml",
@@ -19,6 +19,7 @@
         "views/gestion_zoo_habitats_views.xml",
         "views/gestion_zoo_raza_views.xml",
         "views/gestion_zoo_menu.xml",
+        "views\gestion_zoo_alimento_view.xml",
     ],
 
     "installable": True,

@@ -9,7 +9,7 @@
         <field name="name">gestion.zoo.especie.view.tree</field>
         <field name="model">gestion.zoo.especie</field>
         <field name="arch" type="xml">
-            <tree string="Gestión Especie">
+            <tree string="Gestión Especie" decoration-danger="peligro_extincion == True">
                 <field name="name" string="Nombre Vulgar"/>
                 <field name="name_cientifico" string="Nombre Científico"/>
                 <field name="peligro_extincion" string="Peligro de Extinción"/>
