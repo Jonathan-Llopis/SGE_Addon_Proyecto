@@ -13,7 +13,7 @@
                 <field name="name" string="Identificador Animal"/>
                 <field name="edad" string="Edad"/>
                 <field name="sexo" widget="badge" decoration-danger="sexo == 'hembra'" decoration-info="sexo == 'macho'"/>
-                <field name="continente" widget="badge" decoration-primary="continente == 'europa'" decoration-info="continente == 'asia'" decoration-danger="continente == 'africa'" decoration-success="continente == 'norteamerica'" decoration-warning="continente == 'sudamerica'" decoration-muted="continente == 'oceania' or continente == 'antartida'"/>
+                <field name="continente" widget="badge" decoration-primary="continente == 'europa'" decoration-info="continente == 'asia'" decoration-danger="continente == 'africa'" decoration-success="continente == 'oceania' or continente == 'norteamerica'" decoration-warning="continente == 'sudamerica'" decoration-muted="continente == 'antartida'"/>
                 <field name="estado_salud"/>
                 <button name="cambiar_estado_salud" string="Cambiar Estado Animal" type="object" icon="fa-heartbeat"/>
             </tree>
@@ -71,6 +71,7 @@
                 <field name="id"/>
                 <field name="name"/>
                 <field name="edad"/>
+                <field name="sexo"/>
                 <field name="especie_animal"/>
                 <field name ="habitat_animal"/>
                 <field name="imagen_animal"/>
@@ -88,8 +89,8 @@
                                 <div t-if="record.especie_animal.value">
                                 Especie: <t t-esc="record.especie_animal.value"/>
                                 </div>
-                                <div t-if="record.edad.value">
-                                Edad: <t t-esc="record.edad.value"/>
+                                <div t-if="record.edad.value and record.sexo.value">
+                                Edad: <t t-esc="record.edad.value"/> / Sexo:  <t t-esc="record.sexo.value"/>
                                 </div>
                                 <div t-if="record.habitat_animal.value">
                                 Habitat: <t t-esc="record.habitat_animal.value"/>

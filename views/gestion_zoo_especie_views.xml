@@ -15,7 +15,7 @@
                 <field name="peligro_extincion" string="Peligro de Extinción"/>
                 <field name="dieta" string="Dieta" widget="badge" decoration-danger="dieta == 'carnivora'" decoration-info="dieta == 'omnivora'" decoration-success="dieta == 'herbivora'"/>
                 <field name="grado_peligro" widget="badge" decoration-danger="grado_peligro == '4' or grado_peligro == '5'" decoration-warning="grado_peligro == '3'" decoration-info="grado_peligro == '2'" decoration-success="grado_peligro == '1'" decoration-primary="grado_peligro == '5'" decoration-muted="grado_peligro == '6'"/>
-                <field name="familia" widget="badge" decoration-primary="familia == 'mamifero'" decoration-danger="familia == 'ave' or familia == 'molusco'" decoration-info="familia == 'reptil' or familia == 'crustaceo'" decoration-success="familia == 'anfibio'" decoration-warning="familia == 'pez' or familia == 'aracnido'" decoration-muted="familia == 'insecto' or familia == 'aracnido'"/>
+                <field name="familia" widget="badge" decoration-primary="familia == 'mamifero'" decoration-danger="familia == 'crustaceo' or familia == 'molusco'" decoration-info="familia == 'reptil' or familia == 'ave'" decoration-success="familia == 'anfibio'" decoration-warning="familia == 'pez' or familia == 'aracnido'" decoration-muted="familia == 'insecto' or familia == 'aracnido'"/>
 
             </tree>
         </field>

@@ -11,9 +11,18 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="before">
-                <field name="compras_zoo" string="Comprador por el Zoo:"/>
+                <field name="compras_zoo" string="Comprado por el Zoo:"/>
             </xpath>
         </field>
     </record>
-  
+    <record id="inherited_model_view_tree" model="ir.ui.view">
+        <field name="name">gestion.zoo.alimentos</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="compras_zoo" string="Comprado por el Zoo:"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
